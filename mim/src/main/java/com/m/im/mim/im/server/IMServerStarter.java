@@ -32,7 +32,7 @@ public class IMServerStarter implements IPlugin{
 		aioServer = new AioServer<>(serverGroupContext);
 		aioServer.start(serverIp, serverPort);
 	}
-
+	@Override
 	public boolean start() {
 		aioHandler = new IMServerAioHandler();
 		aioListener = new IMServerAioListener(); // 可以为空
