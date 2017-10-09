@@ -1,7 +1,7 @@
 package com.m.im.common.entity.model;
 
-import com.base.message.MessageKit;
-import com.base.model.core.JModel;
+import com.m.im.common.util.msgutil.MessageKit;
+import com.m.im.common.util.core.JModel;
 import java.math.BigInteger;
 
 import com.jfinal.plugin.activerecord.IBean;

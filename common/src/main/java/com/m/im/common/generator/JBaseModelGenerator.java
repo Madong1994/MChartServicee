@@ -94,8 +94,8 @@ public class JBaseModelGenerator extends BaseModelGenerator {
 				+ "\t\treturn update;%n"
 				+ "\t}%n%n"
 				;
-		this.importTemplate = "import com.base.message.MessageKit;%n"
-				+ "import com.base.model.core.JModel;%n"
+		this.importTemplate = "import com.m.im.common.util.msgutil.MessageKit;%n"
+				+ "import com.m.im.common.util.core.JModel;%n"
 				+ "import java.math.BigInteger;%n%n"
 				+ "import com.jfinal.plugin.activerecord.IBean;%n"
 				+ "import com.jfinal.plugin.ehcache.CacheKit;%n"

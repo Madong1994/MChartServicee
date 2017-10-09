@@ -1,6 +1,6 @@
 package com.m.im.common.entity;
 
-import com.base.model.core.Table;
+import com.m.im.common.util.core.Table;
 import com.m.im.common.entity.model.BaseMUser;
 
 /**

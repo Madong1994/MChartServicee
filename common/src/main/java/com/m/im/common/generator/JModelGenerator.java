@@ -24,7 +24,7 @@ public class JModelGenerator extends ModelGenerator {
 			String baseModelPackageName, String modelOutputDir) {
 		super(modelPackageName, baseModelPackageName, modelOutputDir);
 		
-		this.importTemplate = "import com.base.model.core.Table;%n"
+		this.importTemplate = "import com.m.im.common.util.core.Table;%n"
 				+ "import %s.%s;%n%n";
 		
 		this.classDefineTemplate =
