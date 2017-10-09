@@ -42,10 +42,10 @@ public class IMWebConfig extends JFinalConfig {
     @Override
     public void configConstant(Constants constants) {
         PropKit.use("jbase.properties");
-
+        System.out.println("------kaishi------");
         constants.setEncoding("UTF-8");
         constants.setMaxPostSize(1024 * 1024 * 2000);
-        constants.setDevMode(false);
+        constants.setDevMode(true);
         constants.setViewType(ViewType.FREE_MARKER);
         constants.setBaseUploadPath("attachment");
     }
@@ -124,9 +124,11 @@ public class IMWebConfig extends JFinalConfig {
 //        plugins.add(activeRecordPlugin);
 
         //加载IM服务
+        System.out.println("加载IM服务");
         log.info("加载IM服务。。。");
         try {
             plugins.add(new IMServerStarter());
+            System.out.println("加载im成功过-----");
             log.info("IM服务加载成功。。。");
         } catch (Exception e) {
             log.debug("IM服务加载失败。。。");

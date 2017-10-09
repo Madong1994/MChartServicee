@@ -1,6 +1,7 @@
 package com.m.im.mweb.controller;
 
 import com.jfinal.core.Controller;
+import com.m.im.common.router.RouterMapping;
 
 /**
  * @类名: RegistController
@@ -11,6 +12,9 @@ import com.jfinal.core.Controller;
  * @创建人：马东
  * @修改人：马东
  */
+@RouterMapping(url = "/test")
 public class RegistController extends Controller{
-
+    public void index(){
+        renderJson("woodjaksjncdkalfmc");
+    }
 }
