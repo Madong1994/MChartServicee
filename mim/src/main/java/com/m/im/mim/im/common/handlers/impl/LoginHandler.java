@@ -3,7 +3,9 @@ package com.m.im.mim.im.common.handlers.impl;
 
 import com.alibaba.fastjson.JSONObject;
 
+import com.m.im.common.entity.MUser;
 import com.m.im.mim.im.common.IMPacket;
+import com.m.im.mim.im.common.entity.User;
 import com.m.im.mim.im.common.handlers.BaseHandler;
 import com.m.im.mim.im.common.protof.RequestModel;
 import com.m.im.mim.im.common.protof.ResponseModel;
@@ -13,6 +15,7 @@ import com.m.im.mim.im.common.util.ResponseCode;
 import com.m.im.mim.im.common.util.annotation.IMInterceptor;
 import com.m.im.mim.im.common.util.annotation.IMRequest;
 import com.m.im.mim.im.common.util.tool.*;
+import com.m.im.service.UserQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tio.core.Aio;
@@ -42,7 +45,7 @@ public class LoginHandler implements BaseHandler {
             log.info(e.getMessage());
             e.printStackTrace();
         }
-        User muser = userService.selectUserByUserNumAndPwd(user.getUserNum(),pwd);
+        MUser muser = UserQuery.me().findUserByNumPwd(user.getUserNum(),pwd);
         if(muser == null){
             //没有注册
             ResultMsg resultMsg = new ResultMsg();

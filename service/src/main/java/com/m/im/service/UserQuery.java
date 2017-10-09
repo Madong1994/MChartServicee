@@ -14,7 +14,7 @@ import com.m.im.common.entity.MUser;
 public class UserQuery {
     protected static final MUser DAO = new MUser();
     private static final UserQuery QUERY = new UserQuery();
-
+    public static UserQuery me(){return QUERY;}
     public MUser findUserByNumPwd(String num, String pwd){
         return DAO.findFirst("select * from m_user where user_num = ? and pwd = ?",num,pwd);
     }
