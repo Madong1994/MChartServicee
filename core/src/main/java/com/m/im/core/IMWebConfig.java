@@ -1,4 +1,4 @@
-package com.m.im.common;
+package com.m.im.core;
 
 import com.jfinal.config.*;
 import com.jfinal.core.Controller;
@@ -6,6 +6,7 @@ import com.jfinal.core.JFinal;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
 import com.jfinal.kit.StrKit;
+import com.jfinal.log.Log;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.IDataSourceProvider;
 import com.jfinal.plugin.activerecord.Model;
@@ -17,6 +18,7 @@ import com.m.im.common.util.ClassScaner;
 import com.m.im.common.util.DbDialectFactory;
 import com.m.im.common.util.Table;
 import com.m.im.common.util.core.JModelMapping;
+import com.m.im.mim.im.server.IMServerStarter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -36,6 +38,7 @@ import java.util.List;
  * 注意：本内容仅限于华夏九鼎内部传阅，禁止外泄以及用于其他的商业目的
  */
 public class IMWebConfig extends JFinalConfig {
+    private Log log = Log.getLog(IMWebConfig.class);
     @Override
     public void configConstant(Constants constants) {
         PropKit.use("jbase.properties");
@@ -112,7 +115,22 @@ public class IMWebConfig extends JFinalConfig {
 
     @Override
     public void configPlugin(Plugins plugins) {
+        DruidPlugin druidPlugin = createDruidPlugin();
+        plugins.add(druidPlugin);
 
+//        ActiveRecordPlugin activeRecordPlugin = createRecordPlugin(druidPlugin);
+//        activeRecordPlugin.setCache(leCachePlugin.getCache());
+//        activeRecordPlugin.setShowSql(JFinal.me().getConstants().getDevMode());
+//        plugins.add(activeRecordPlugin);
+
+        //加载IM服务
+        log.info("加载IM服务。。。");
+        try {
+            plugins.add(new IMServerStarter());
+            log.info("IM服务加载成功。。。");
+        } catch (Exception e) {
+            log.debug("IM服务加载失败。。。");
+        }
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.m.im.common.util.msgutil;
 
-import com.m.im.common.util.msgutil.Listener;
 import com.jfinal.core.JFinal;
 import com.jfinal.log.Log;
 

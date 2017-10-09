@@ -2,6 +2,7 @@ package com.m.im.mim.im.server;
 
 
 
+import com.jfinal.plugin.IPlugin;
 import com.m.im.mim.im.common.Const;
 import com.m.im.mim.im.common.IMPacket;
 import org.tio.server.AioServer;
@@ -10,7 +11,7 @@ import org.tio.server.intf.ServerAioListener;
 
 import java.io.IOException;
 
-public class IMServerStarter{
+public class IMServerStarter implements IPlugin{
 	//handler, 包括编码、解码、消息处理
     public static IMServerAioHandler aioHandler = null;
     //事件监听器，可以为null，但建议自己实现该接口，可以参考showcase了解些接口
@@ -32,7 +33,7 @@ public class IMServerStarter{
 		aioServer.start(serverIp, serverPort);
 	}
 
-	public static boolean start() {
+	public boolean start() {
 		aioHandler = new IMServerAioHandler();
 		aioListener = new IMServerAioListener(); // 可以为空
 		serverGroupContext = new ServerGroupContext<>(aioHandler, aioListener);
