@@ -42,7 +42,7 @@ public class IMWebConfig extends JFinalConfig {
     @Override
     public void configConstant(Constants constants) {
         PropKit.use("jbase.properties");
-        System.out.println("------kaishi------");
+        dbDialectConfig();
         constants.setEncoding("UTF-8");
         constants.setMaxPostSize(1024 * 1024 * 2000);
         constants.setDevMode(true);
@@ -79,7 +79,6 @@ public class IMWebConfig extends JFinalConfig {
         String db_name = dbProp.get("db_name").trim();
         String db_user = dbProp.get("db_user").trim();
         String db_password = dbProp.get("db_password").trim();
-        DbDialectFactory.use("com.m.im.common.util.DbDialect");
         return DbDialectFactory.getDbDialect().createDuidPlugin(db_host, db_host_port, db_name, db_user, db_password);
     }
 
@@ -141,7 +140,20 @@ public class IMWebConfig extends JFinalConfig {
     }
 
     @Override
+    public void afterJFinalStart() {
+        //启动前端引擎
+        super.afterJFinalStart();
+    }
+
+    @Override
     public void configHandler(Handlers handlers) {
 
+    }
+
+    private void dbDialectConfig() {
+        String dialect = PropKit.get("jpress_db_dialect");
+        if (StringUtils.isNotBlank(dialect)) {
+            DbDialectFactory.use(dialect);
+        }
     }
 }

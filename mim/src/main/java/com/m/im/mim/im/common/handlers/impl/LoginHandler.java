@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.m.im.common.entity.MUser;
 import com.m.im.mim.im.common.IMPacket;
 import com.m.im.mim.im.common.entity.User;
+import com.m.im.mim.im.common.handlers.BaseHandleImpl;
 import com.m.im.mim.im.common.handlers.BaseHandler;
 import com.m.im.mim.im.common.protof.RequestModel;
 import com.m.im.mim.im.common.protof.ResponseModel;
@@ -28,7 +29,7 @@ import java.security.NoSuchAlgorithmException;
 
 @IMRequest(requestCode = RequestCode.LOGIN)
 @IMInterceptor
-public class LoginHandler implements BaseHandler {
+public class LoginHandler extends BaseHandleImpl {
 
     private static Logger log = LoggerFactory.getLogger(LoginHandler.class);
     @Override
