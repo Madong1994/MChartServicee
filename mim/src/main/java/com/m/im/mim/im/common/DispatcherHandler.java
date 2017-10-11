@@ -2,7 +2,6 @@ package com.m.im.mim.im.common;
 
 
 import com.jfinal.log.Log;
-import com.m.im.mim.im.common.handlers.BaseHandleImpl;
 import com.m.im.mim.im.common.handlers.BaseHandler;
 import com.m.im.mim.im.common.interceptor.BaseInterceptor;
 import com.m.im.mim.im.common.interceptor.HandlerInterceptor;
@@ -10,7 +9,6 @@ import com.m.im.mim.im.common.protof.RequestModel;
 import com.m.im.mim.im.common.util.MClassScaner;
 import com.m.im.mim.im.common.util.annotation.IMInterceptor;
 import com.m.im.mim.im.common.util.annotation.IMRequest;
-import com.m.im.mim.im.common.util.tool.ClassScaner;
 import org.tio.core.ChannelContext;
 
 import java.lang.reflect.InvocationTargetException;
@@ -37,7 +35,7 @@ public class DispatcherHandler {
     private static final Log log = Log.getLog(DispatcherHandler.class);
 
     public static String handler(RequestModel.ImRequest imRequest, ChannelContext<Object, IMPacket, Object> channelContext) {
-        List<Class<?>> BaseHandleImplClassList = MClassScaner.getScanList(BaseHandleImpl.class,BaseHandleImpl.class);
+        List<Class> BaseHandleImplClassList = MClassScaner.scanSubClass(BaseHandler.class,BaseHandler.class);
         if (BaseHandleImplClassList != null) {
             for (Class<?> impl : BaseHandleImplClassList) {
                 IMRequest annotation = impl.getAnnotation(IMRequest.class);

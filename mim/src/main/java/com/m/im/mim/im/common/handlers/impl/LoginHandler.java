@@ -2,11 +2,9 @@ package com.m.im.mim.im.common.handlers.impl;
 
 
 import com.alibaba.fastjson.JSONObject;
-
 import com.m.im.common.entity.MUser;
 import com.m.im.mim.im.common.IMPacket;
 import com.m.im.mim.im.common.entity.User;
-import com.m.im.mim.im.common.handlers.BaseHandleImpl;
 import com.m.im.mim.im.common.handlers.BaseHandler;
 import com.m.im.mim.im.common.protof.RequestModel;
 import com.m.im.mim.im.common.protof.ResponseModel;
@@ -22,14 +20,13 @@ import org.slf4j.LoggerFactory;
 import org.tio.core.Aio;
 import org.tio.core.ChannelContext;
 
-
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 
 @IMRequest(requestCode = RequestCode.LOGIN)
 @IMInterceptor
-public class LoginHandler extends BaseHandleImpl {
+public class LoginHandler implements BaseHandler {
 
     private static Logger log = LoggerFactory.getLogger(LoginHandler.class);
     @Override
